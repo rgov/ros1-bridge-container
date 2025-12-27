@@ -5,7 +5,9 @@
 # It is also *highly* recommended to persist the ccache directory, e.g.,
 #     podman build --volume ~/.cache/ros-bridge-ccache:/ccache:Z -t ros2-first-steps .
 
-FROM whoi/phyto-arm:install-test AS ros1-pkg
+# You need to provide the ROS1 workspace. I was testing with this one. The
+# workspace is copied in a later step; prefer to copy only the install space.
+FROM whoi/phyto-arm:install-test AS ros1-ws
 
 
 FROM ubuntu:20.04 AS ros1-ros2-base
@@ -98,7 +100,7 @@ RUN mkdir /ros2_message_convert \
 
 # Copy pre-built ROS1 packages from another image.
 # Must use the same path as the original build to keep pkg-config working.
-COPY --from=ros1-pkg /app/install /app/install
+COPY --from=ros1-ws /app/install /app/install
 
 # Find all packages and synthesize ROS2 messages for them
 RUN /bin/bash -c " \

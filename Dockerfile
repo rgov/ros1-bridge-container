@@ -129,6 +129,7 @@ RUN /bin/bash -c " \
     MAKEFLAGS=-j1 colcon build \
         --packages-select ros1_bridge \
         --cmake-force-configure \
+        --cmake-args -DCMAKE_BUILD_TYPE=Release \
         --event-handlers console_cohesion+ \
     "
 

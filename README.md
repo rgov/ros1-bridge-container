@@ -21,3 +21,5 @@ To print the list of converted messages, you can run:
 
     podman run --rm -it ros2-first-steps \
         ros2 run ros1_bridge dynamic_bridge --print-pairs
+
+The container is quite large -- the `libros1_bridge.so` binary consumes *hundreds* of megabytes, depending on the number of bridged messages. A Release build reduces the size by ~79%.

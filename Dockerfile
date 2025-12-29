@@ -105,7 +105,7 @@ COPY --from=ros1-ws /app/install /app/install
 # Find all packages and synthesize ROS2 messages for them
 RUN /bin/bash -c " \
     mkdir -p /ros2_msgs_ws/src && \
-    source /opt/ros/noetic/setup.bash && \
+    source /opt/ros/${ROS1_DISTRO}/setup.bash && \
     source /app/install/setup.bash && \
     for pkg in \$(rospack list | grep '/app/install' | awk '{print \$1}'); \
     do \

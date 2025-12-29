@@ -95,7 +95,7 @@ RUN rosdep init \
 
 # Install the ros2_message_convert tool
 RUN mkdir /ros2_message_convert \
- && curl -L https://github.com/rgov/ros2_convert_msg/archive/refs/heads/master.tar.gz?7 \
+ && curl -L https://github.com/CentraleNantesRobotics/ros2_convert_msg/archive/refs/heads/master.tar.gz \
         | tar -xz --strip-components=1 -C /ros2_message_convert
 
 # Copy pre-built ROS1 packages from another image.

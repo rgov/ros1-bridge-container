@@ -4,7 +4,7 @@ This project contains an example Dockerfile for building the [ros1_bridge](https
 
 It was tested with ROS1 Noetic and ROS2 Foxy, which both run on Ubuntu 20.04 and hence is a natural place to start on a ROS2 migration.
 
-The build process takes a ROS1 workspace and creates a ROS2 workspace with stub packages containing only message definitions. Message definitions are converted using a fork of [ros2_convert_msg](https://github.com/CentraleNantesRobotics/ros2_convert_msg) with a few improvements.
+The build process takes a ROS1 workspace and creates a ROS2 workspace with stub packages containing only message definitions. Message definitions are converted using [ros2_convert_msg](https://github.com/CentraleNantesRobotics/ros2_convert_msg).
 
 Because upstream ros1_bridge is currently broken, the container also includes fixes for https://github.com/ros2/ros1_bridge/issues/459 and https://github.com/ros2/ros1_bridge/issues/464.
 
@@ -13,7 +13,7 @@ Due to heavy use of C++ template metaprogramming, ros1_bridge takes an agonizing
     podman build --volume ~/.cache/ros-bridge-ccache:/ccache:Z \
         --tag ros2-first-steps .
 
-It is also strongly recommended that you build with at least 4GB of memory allocated to the container. For example, you may need to raise the memory allocation to the podman machine VM used on macoS:
+It is also strongly recommended that you build with at least 4GB of memory allocated to the container. For example, you may need to raise the memory allocation to the podman machine VM used on macOS:
 
     podman machine set --memory 4096
 
